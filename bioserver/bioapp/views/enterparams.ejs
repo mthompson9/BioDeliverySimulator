@@ -120,7 +120,7 @@
 
           function AppViewModel() {
 
-              myFunc = this;
+              myView = this;
 
               //these represent text boxes, radio buttons, etc.
               this.dropletDiameterA = ko.observable("");
@@ -195,13 +195,13 @@
                 
                 //call the server
                 this.callServerGetRunResult(function(paramtersAsJsonString) {
-                    alert('debug: get parameters from server:' + JSON.stringify(paramtersAsJsonString));
+                    //alert('debug: get parameters from server:' + JSON.stringify(paramtersAsJsonString));
 
                     //update the model, and therefore values in the form
-                    viewModel.dropletDiameterA(paramtersAsJsonString.dropletDiameterA);
-                    viewModel.dropletDiameterB(paramtersAsJsonString.dropletDiameterB);
-                    viewModel.dropletDiameterType(paramtersAsJsonString.dropletDiameterType);
-                    viewModel.windSpeed(paramtersAsJsonString.windSpeed);
+                    myView.dropletDiameterA(paramtersAsJsonString.dropletDiameterA);
+                    myView.dropletDiameterB(paramtersAsJsonString.dropletDiameterB);
+                    myView.dropletDiameterType(paramtersAsJsonString.dropletDiameterType);
+                    myView.windSpeed(paramtersAsJsonString.windSpeed);
                 });
               }
 
