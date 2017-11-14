@@ -1,0 +1,125 @@
+
+    <div class="row justify-content-center">
+        <div class="col-sm-10 align-self-center">
+           
+                <div class="form-group row">
+                    <label class="col-sm-2" for="exampleInputEmail1">Wind speed</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="windSpeedGroup" id="windSpeed1" value="low" data-bind="checked: windSpeed"  > Low </input>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="windSpeedGroup" id="windSpeed2" value="medium" data-bind="checked: windSpeed" > Medium</input>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="windSpeedGroup" id="windSpeed3" value="high" data-bind="checked: windSpeed" > High</input>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2" for="exampleInputEmail1">Rain</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio1" value="option1"> None
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option2"> Weak
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="option3"> Heavy
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2" for="exampleInputEmail1">Droplet diameter</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <select id="inputState" class="form-control" data-bind="value: dropletDiameterType" >
+                                <option value="nozzle">Nozzle model</option>
+                                <option value="other">other</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input type="text" class="form-control" id="inputCity" data-bind="value: dropletDiameterA" />
+
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input type="text" class="form-control" id="inputCity" data-bind="value: dropletDiameterB"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2" for="exampleInputEmail1">Application height</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio1" value="option1"> Aerial
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio2" value="option2"> Boon spray
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio3" value="option3"> Knapsack
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2" for="exampleInputEmail1">Application rate (g/hectare)</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2" for="exampleInputEmail1">Dilution rate (L)</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2" for="exampleInputEmail1">RH</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio1" value="option1"> Dry
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio2" value="option2"> Medium
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio3" value="option3"> Humid
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio3" value="option3"> Very humid
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>

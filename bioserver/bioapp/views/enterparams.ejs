@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BiodeliverySim</title>
+    <script src="javascripts/jquery/dist/jquery.js"></script>
+
+    <script type='text/javascript' src='javascripts/knockout/dist/knockout.js'></script>
+
+
+    <link rel="stylesheet" href="javascripts/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="stylesheets/site.css" />
+
+</head>
+<body>
+   
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BiodeliverySim</a>
+          </div>
+          <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                  <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                  <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                  <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+  <div class="container body-content">
+
+
+
+
+      <div id="rootwizard">
+          <div class="navbar">
+              <div class="navbar-inner">
+                  <div class="container">
+                      <ul>
+                          <li><a href="#tab1" data-toggle="tab">Spray</a></li>
+                          <li><a href="#tab2" data-toggle="tab">Leaf properties</a></li>
+                          <li><a href="#tab3" data-toggle="tab">Droplet properties</a></li>
+                          <li><a href="#tab4" data-toggle="tab">AI/Formulation Properties</a></li>
+                          <li><a href="#tab5" data-toggle="tab">Timepoints</a></li>
+                          <li><a href="#tab6" data-toggle="tab">Summary</a></li>
+                          <li><a href="#tab7" data-toggle="tab">Run Simulaton</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="tab-content">
+              
+              <!--  1. spray tab  -->
+              <div class="tab-pane" id="tab1">
+                  <% include tabs/spray %>
+              </div>
+              
+
+              <!-- leaf properties tab  -->
+              <div class="tab-pane" id="tab2">
+                  <% include tabs/leafproperties %>
+              </div>
+
+              <div class="tab-pane" id="tab3">
+                  <% include tabs/dropletproperties %>
+              </div>
+
+              <div class="tab-pane" id="tab4">
+                  <% include tabs/aiformproperties %>
+              </div>
+
+              <div class="tab-pane" id="tab5">
+                  <% include tabs/timepoints %>
+              </div>
+
+              <div class="tab-pane" id="tab6">
+                  Just for testing, shows some of the parameters and the json that will be sent to the server to run the simulation:<br />
+
+                  Type: <strong data-bind="text: dropletDiameterType"></strong><br />
+                  Droplet diameter A: <strong data-bind="text: dropletDiameterA"></strong><br />
+                  Droplet diameter B: <strong data-bind="text: dropletDiameterB"></strong><br />
+
+                  <!-- this is dynamically generated on each change to the user interface to the 'json' function in the model -->
+                  <strong data-bind="text: json"></strong>
+              </div>
+
+              <div class="tab-pane" id="tab7">
+                  
+
+                  <input type="submit" value="Run simulation" data-bind="click: submitModelRun" />
+              </div>
+
+
+              <ul class="pager wizard">
+                  <li class="previous first" style="display:none;"><a href="#">First</a></li>
+                  <li class="previous"><a href="#">Previous</a></li>
+                  <li class="next last" style="display:none;"><a href="#">Last</a></li>
+                  <li class="next"><a href="#">Next</a></li>
+              </ul>
+          </div>
+      </div>
+
+
+
+      <script>
+          $(document).ready(function() {
+              $('#rootwizard').bootstrapWizard();
+          });
+
+          function AppViewModel() {
+
+              myFunc = this;
+
+              //these represent text boxes, radio buttons, etc.
+              this.dropletDiameterA = ko.observable("");
+              this.dropletDiameterB = ko.observable("");
+              this.dropletDiameterType = ko.observable("");
+              this.windSpeed = ko.observable("");
+
+              //convert to json to send to the server
+              this.getJson = function() {
+                  var j = {
+                      "windSpeed": this.windSpeed(),
+                      "dropletDiameterType": this.dropletDiameterType(),
+                      "dropletDiameterA": this.dropletDiameterA(),
+                      "dropletDiameterB": this.dropletDiameterB()
+                   };
+
+                  return JSON.stringify( j );
+              }
+
+              this.json = ko.computed(function() {
+                  return this.getJson()
+              }, this);
+
+              /// start the job, returns the job number
+              this.callServerSubmit = function(json, callbackFun) {
+                  $.ajax({
+                     headers: {"Accept": "application/json"},
+                     url: "/api/runmodel",
+                     type: "POST",
+                     data: json,
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "json",
+                     success: function (data) {
+                          alert("call succeeded, returned run number:" + data);
+                          callbackFun(data);
+                     },
+                     failure: function (response) {
+                        alert("call failed");
+                     }
+                  });
+              }
+
+              //get the parameters from the server
+              this.callServerGetRunResult = function(callbackFun) {
+                    $.ajax({
+                       headers: {"Accept": "application/json"},
+                       url: "/api/getparameters",
+                       type: "GET",
+                       contentType: "application/json; charset=utf-8",
+                       dataType: "json",
+                       success: function (data) {
+                            callbackFun(data);
+                       },
+                       failure: function (response) {
+                          alert("debug: call failed");
+                       }
+                    });
+                }
+
+              //for when user clicks on the run simulator button 
+              this.submitModelRun = function() {
+                  var json = this.getJson();
+                  alert('debug: submitting json to the server: ' + json);
+
+                  this.callServerSubmit(json, function(results) {
+                      //TODO: do something with the results, once we have results
+                  });
+              }
+
+              //connects to the server and will load the values into the model, the model will then update the screen
+              this.loadParametersFromServer = function() {
+                
+                //call the server
+                this.callServerGetRunResult(function(paramtersAsJsonString) {
+                    alert('debug: get parameters from server:' + JSON.stringify(paramtersAsJsonString));
+
+                    //update the model, and therefore values in the form
+                    viewModel.dropletDiameterA(paramtersAsJsonString.dropletDiameterA);
+                    viewModel.dropletDiameterB(paramtersAsJsonString.dropletDiameterB);
+                    viewModel.dropletDiameterType(paramtersAsJsonString.dropletDiameterType);
+                    viewModel.windSpeed(paramtersAsJsonString.windSpeed);
+                });
+              }
+
+          }
+
+          //start up knockout js
+          var viewModel = new AppViewModel();
+          ko.applyBindings(viewModel);
+
+          //fetch the default values
+          viewModel.loadParametersFromServer();
+
+      </script>
+
+
+      <hr />
+      <footer>
+          <p>&copy; 2017 - BiodeliverySim</p>
+      </footer>
+  </div>
+
+
+
+    <!-- <script src="~/lib/jquery/dist/jquery.js"></script> -->
+    <script src="javascripts/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="javascripts/site.js" asp-append-version="true"></script>
+    <script src="javascripts/twitter-bootstrap-wizard/jquery.bootstrap.wizard.js"></script>
+    
+</body>
+</html>
