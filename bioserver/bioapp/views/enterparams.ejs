@@ -154,7 +154,7 @@
                      contentType: "application/json; charset=utf-8",
                      dataType: "json",
                      success: function (data) {
-                          alert("call succeeded, returned run number:" + data);
+                          alert("call succeeded, returned:" + JSON.stringify(data));
                           callbackFun(data);
                      },
                      failure: function (response) {
