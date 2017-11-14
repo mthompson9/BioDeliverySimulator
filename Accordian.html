@@ -52,33 +52,30 @@
 
     <hr/>
 
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="app.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
     #accordion{
-        width: 400px;
+        /*width: 400px;
         float:right;
         position:absolute;
         top:80px;
-        right:0px;
+        right:0px;*/
         background-color: #F8F9FA;
         border-radius: 5px;
     }
     .header-accordion{
         position:relative;
-        padding-top: 20px;
-        padding-left: 100px;
+
     }
     .profile-tabs{
         position:relative;
         padding-top: 40px;
     }
     .progress {
-        margin-top: 260px;
-        width: 500px;
+        margin-top: 170px;
     }
     .bs-example{
     	margin: 20px;
@@ -86,8 +83,15 @@
     .panel-title .glyphicon{
         font-size: 14px;
     }
+
+    .prop-list {
+      border-left: #666 2px solid;
+    }
+
+    .center {
+      text-align: center;
+    }
 </style>
-     <div class="container bg-light" style="padding: 40px 0">
 <script>
     $(document).ready(function(){
         // Add minus icon for collapse element which is open by default
@@ -112,112 +116,135 @@
       .attr("aria-valuenow", current_progress)
       .text(current_progress + "% Complete");
       if (current_progress >= 100)
-          clearInterval(interval);
+      {
+        clearInterval(interval);
+        window.location.href="heatmap.html"
+      }
+
   }, 1000);
 });
 </script>
-</div>
+
 <body>
-<div align="center">
-    <h3>Simulation</h3>
 
-<div class="progress">
-  <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-    <span id="current-progress"></span>
-  </div>
-  </div>
-<div class="calculation">
-    <p>Calculating...</p>
-</div>
-</div>
-<div class="header-accordion" id="accordion"</div>
-    <p><h2>Properties</h2> </p>
+  <div class="row justify-content-center">
 
-<div class="profile-tabs" id="accordion">
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Sim 1</a></li>
-    <li><a data-toggle="tab" href="#menu1">Sim 2</a></li>
-    <li><a data-toggle="tab" href="#menu2">Sim 3</a></li>
-    <li><a data-toggle="tab" href="#menu3">Sim 4</a></li>
-  </ul>
+      <div class="col-sm-8 justify-content-center" style="padding: 0 10rem;">
+        <h3 class="center">Simulation</h3>
+        <div class="progress">
+          <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+            <span id="current-progress"></span>
+          </div>
+          <div class="calculation">
 
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-    </div>
-    <div id="menu1" class="tab-pane fade">
-    </div>
-    <div id="menu2" class="tab-pane fade">
-    </div>
-    <div id="menu3" class="tab-pane fade">
-    </div>
+          </div>
+        </div>
+        <div>
+
+        <p>Calculating...</p>
+      </div>
+      </div>
+      <div class="col-sm-4 prop-list">
+
+          <div>
+            <div class="header-accordion" id="accordion"</div>
+
+            <h2>Properties</h2>
+
+            <div class="profile-tabs" id="accordion">
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Sim 1</a></li>
+                <li><a data-toggle="tab" href="#menu1">Sim 2</a></li>
+                <li><a data-toggle="tab" href="#menu2">Sim 3</a></li>
+                <li><a data-toggle="tab" href="#menu3">Sim 4</a></li>
+              </ul>
+
+              <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                </div>
+                <div id="menu2" class="tab-pane fade">
+                </div>
+                <div id="menu3" class="tab-pane fade">
+                </div>
+              </div>
+              <div class="bs-example">
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-plus"></span>Spray</a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>
+                                Wind Speed: <br> Rain: <br>
+                                Droplet Diameter: <br> Droplet Speed: <br>
+                                Application Height: <br> Application Rate: <br> Dilution Rate:
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-plus"></span>Leaf</a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>
+                                Surface Angle: <br> Cuticle Thickness: <br>
+                                Tissue Thickness: <br> Metabolic Rate: <br>
+                                Diffusion Coefficient(Cuticular Layer): <br> Diffusion Coefficient(Leaf Tissue): <br> Ester to acid:
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-plus"></span>Droplet</a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>
+                                Diffusion Coefficient: <br> Surface Tension(Liquid Vapour): <br>
+                                Droplet Dynamic Viscosity: <br> Droplet Density: <br> Log P:
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-plus"></span>AI/Formulation</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <p>
+                                Molar Mass: <br> Partial Pressure: <br>
+                                Solubility in Water: <br> Volatility Rate*: <br>
+                                Photostability Rate*: <br> Crystallisation Rate*: <br> Dissolution Rate:
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+          </div>
+      </div>
+
   </div>
-<div class="bs-example">
-    <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-plus"></span>Spray</a>
-                </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <p>
-                    Wind Speed: <br> Rain: <br>
-                    Droplet Diameter: <br> Droplet Speed: <br>
-                    Application Height: <br> Application Rate: <br> Dilution Rate:
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-plus"></span>Leaf</a>
-                </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <p>
-                    Surface Angle: <br> Cuticle Thickness: <br>
-                    Tissue Thickness: <br> Metabolic Rate: <br>
-                    Diffusion Coefficient(Cuticular Layer): <br> Diffusion Coefficient(Leaf Tissue): <br> Ester to acid:
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-plus"></span>Droplet</a>
-                </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <p>
-                    Diffusion Coefficient: <br> Surface Tension(Liquid Vapour): <br>
-                    Droplet Dynamic Viscosity: <br> Droplet Density: <br> Log P:
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-plus"></span>AI/Formulation</a>
-                </h4>
-            </div>
-            <div id="collapseFour" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <p>
-                    Molar Mass: <br> Partial Pressure: <br>
-                    Solubility in Water: <br> Volatility Rate*: <br>
-                    Photostability Rate*: <br> Crystallisation Rate*: <br> Dissolution Rate:
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+
+
+
+
+
 </body>
 </html>

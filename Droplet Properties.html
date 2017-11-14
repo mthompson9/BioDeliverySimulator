@@ -19,19 +19,20 @@
     <!doctype html>
     <html lang="en">
       <head>
-
-        <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyAY0ANXjGBme9GMjKfAU6lYCwjLbi7VZDU",
-        authDomain: "fedobot.firebaseapp.com",
-        databaseURL: "https://fedobot.firebaseio.com",
-        projectId: "fedobot",
-        storageBucket: "fedobot.appspot.com",
-        messagingSenderId: "747606478765"
-      };
-      firebase.initializeApp(config);
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyCHBinUqUn2Xnt4FQZHeivt_6UXX-5SX1M",
+            authDomain: "bio-sim.firebaseapp.com",
+            databaseURL: "https://bio-sim.firebaseio.com",
+            projectId: "bio-sim",
+            storageBucket: "bio-sim.appspot.com",
+            messagingSenderId: "1069672537767"
+          };
+          firebase.initializeApp(config);
+        </script>
+        
 
 
     </script>
@@ -87,8 +88,6 @@
 
     <hr/>
 
-    <hr/>
-    <hr/>
 
     <!-- Form -->
     <div class="row justify-content-center">
@@ -96,31 +95,35 @@
             <form>
 
 <div class="form-group row">
-   <label class="col-sm-5" for="exampleInputEmail1">Diffusion Coefficent(m^2/s)</label>
+   <label class="col-sm-5" for="exampleInputEmail1">Diffusion Coefficent</label>
    <div class="col-sm-2">
        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
    </div>
+   <label class="col-sm-2" for="exampleInputEmail1">m^2/s</label>
 </div>
 
 <div class="form-group row">
-   <label class="col-sm-5" for="exampleInputEmail1">Surface Tension of Liquid Vapour(mN/m)</label>
+   <label class="col-sm-5" for="exampleInputEmail1">Surface Tension of Liquid Vapour</label>
    <div class="col-sm-2">
        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
    </div>
+    <label class="col-sm-2" for="exampleInputEmail1">mN/m</label>
 </div>
 
 <div class="form-group row">
-   <label class="col-sm-5" for="exampleInputEmail1">Droplet Dynamic Viscocity(mPa/s)</label>
+   <label class="col-sm-5" for="exampleInputEmail1">Droplet Dynamic Viscocity</label>
    <div class="col-sm-2">
        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
    </div>
+   <label class="col-sm-2" for="exampleInputEmail1">mPa/s</label>
 </div>
 
 <div class="form-group row">
-   <label class="col-sm-5" for="exampleInputEmail1">Density(kg/m^3)</label>
+   <label class="col-sm-5" for="exampleInputEmail1">Density</label>
    <div class="col-sm-2">
        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
    </div>
+   <label class="col-sm-2" for="exampleInputEmail1">kg/m^3</label>
 </div>
 
 <div class="form-group row">
@@ -130,13 +133,20 @@
    </div>
 </div>
 
-      </form>
-      </div>
-  </div>
+
+
+
   <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-Next
-</button>
+  <div class="form-group row">
+     <div class="col-sm-2 offset-sm-5">
+       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+       Next
+       </button>
+     </div>
+
+   </form>
+   </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -165,5 +175,7 @@ You are defaulted to naked AI
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script var database ="firebase.database.bio-sim.firebaseapp.com" (); > </script>
+
 </body>
 </html>
