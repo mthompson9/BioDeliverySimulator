@@ -1,4 +1,4 @@
-var buttonclick = document.getElementById("tester");
+
 var firebaseRef = firebase.database().ref();
 
 var applicationHeight;
@@ -11,6 +11,8 @@ var windSpeed;
 
 function loadDefaults(){
 
+    
+
 
     var db = firebase.database();
     var ref = db.ref('/Defaults/Spray');
@@ -18,8 +20,13 @@ function loadDefaults(){
 
 
             applicationRate = snapshot.val().appRate
+            applicationHeight = snapshot.val().applicationHeight.boonspray
             window.alert(applicationRate)
+            window.alert(applicationHeight)
+
             document.getElementById("rate").value = applicationRate;
+            document.getElementById("boonSpray").checked = applicationHeight;
+            
             
 
 
