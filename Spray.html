@@ -31,9 +31,9 @@
     firebase.initializeApp(config);
   </script>
 
-
-    </script>
+ <script src="app.js"></script>
         <title>Bio Delivery Simulator</title>
+        
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,6 +47,7 @@
             <div class="container bg-light" style="padding: 40px 0">
 
                 <h1 class="text-center">Bio Delivery Simulator</h1>
+                
 
                 <hr/>
 
@@ -173,7 +174,8 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2" for="exampleInputEmail1">Application rate (g/hectare</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            <p><input type="textbox" maxlength="10" name="value" id="rate" value="I"/></p>
+                                            <p><input type="button" value="submit" id="tester" onclick="loadDefaults()" /></p>
                                     </div>
                                 </div>
 
