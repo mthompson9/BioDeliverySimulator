@@ -1,0 +1,42 @@
+[debug] [2017-12-08T11:09:04.341Z] ----------------------------------------------------------------------
+[debug] [2017-12-08T11:09:04.344Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions,hosting
+[debug] [2017-12-08T11:09:04.344Z] CLI Version:   3.12.0
+[debug] [2017-12-08T11:09:04.344Z] Platform:      win32
+[debug] [2017-12-08T11:09:04.344Z] Node Version:  v8.5.0
+[debug] [2017-12-08T11:09:04.346Z] Time:          Fri Dec 08 2017 11:09:04 GMT+0000 (GMT Standard Time)
+[debug] [2017-12-08T11:09:04.346Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-08T11:09:04.444Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-08T11:09:04.445Z] > authorizing via signed-in user
+[debug] [2017-12-08T11:09:04.448Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/bio-sim  
+ Fri Dec 08 2017 11:09:04 GMT+0000 (GMT Standard Time)
+[debug] [2017-12-08T11:09:05.180Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-08T11:09:05.181Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/bio-sim/tokens  
+ Fri Dec 08 2017 11:09:05 GMT+0000 (GMT Standard Time)
+[debug] [2017-12-08T11:09:05.833Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\user\Desktop\pusher'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2017-12-08T11:09:16.589Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/bio-sim  
+ Fri Dec 08 2017 11:09:16 GMT+0000 (GMT Standard Time)
+[debug] [2017-12-08T11:09:16.590Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/bio-sim/apiKeys  
+ Fri Dec 08 2017 11:09:16 GMT+0000 (GMT Standard Time)
+[debug] [2017-12-08T11:09:16.590Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/bio-sim  
+ Fri Dec 08 2017 11:09:16 GMT+0000 (GMT Standard Time)
+[debug] [2017-12-08T11:09:17.582Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-08T11:09:17.583Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1069672537767/clients/_:getWebAppConfig  
+ Fri Dec 08 2017 11:09:17 GMT+0000 (GMT Standard Time)
+[debug] [2017-12-08T11:09:17.961Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-08T11:09:18.086Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-08T11:09:18.424Z] <<< HTTP RESPONSE 200
+[warn] !  hosting: Port 5000 is not available. Trying another port...
+[debug] [2017-12-08T11:09:18.983Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/bio-sim  
+ Fri Dec 08 2017 11:09:18 GMT+0000 (GMT Standard Time)
+[debug] [2017-12-08T11:09:19.580Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-08T11:09:19.580Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1069672537767/clients/_:getWebAppConfig  
+ Fri Dec 08 2017 11:09:19 GMT+0000 (GMT Standard Time)
+[debug] [2017-12-08T11:09:20.050Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: functions
+[info] +  hosting: Local server: http://localhost:5004
+

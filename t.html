@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Biodelivery Simulator</title>
+
+        <!-- update the version number as needed -->
+        <script defer src="/__/firebase/4.6.1/firebase-app.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script defer src="/__/firebase/4.6.1/firebase-auth.js"></script>
+        <script defer src="/__/firebase/4.6.1/firebase-database.js"></script>
+        <script defer src="/__/firebase/4.6.1/firebase-messaging.js"></script>
+        <script defer src="/__/firebase/4.6.1/firebase-storage.js"></script>
+        <!-- initialize the SDK after all desired features are loaded -->
+        <script defer src="/__/firebase/init.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+            // Initialize Firebase
+            var config = {
+              apiKey: "AIzaSyCHBinUqUn2Xnt4FQZHeivt_6UXX-5SX1M",
+              authDomain: "bio-sim.firebaseapp.com",
+              databaseURL: "https://bio-sim.firebaseio.com",
+              projectId: "bio-sim",
+              storageBucket: "bio-sim.appspot.com",
+              messagingSenderId: "1069672537767"
+            };
+            firebase.initializeApp(config);
+          </script>
+    
+    
+        </script>
+        <script src="app.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="container bg-light" style="padding: 40px 0">
+
+    <h1 class="text-center">Bio Delivery Simulator</h1>
+
+    <hr/>
+
+    <p id="ug">l</p>
+
+    <script>        
+    window.onload = function plots() {
+
+    var db = firebase.database();
+
+    var refPath = ('/Current Simulation/Current Sim/UpLeaf4/uptissue')
+    var ref = db.ref(refPath);
+    ref.once('value', function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+        turt = childSnapshot.val();
+        document.getElementById('ug').innerHTML = turt;
+        });
+    });
+
+    }
+        
+        
+    </script>
+
+
+
+</body>
+</html>

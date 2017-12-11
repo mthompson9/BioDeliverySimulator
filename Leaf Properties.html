@@ -3,6 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script> function getVal() {
+
+         return document.getElementById('coefftissue').value = document.getElementById('coefficienttissue').value }
+    </script>
+    <script> function resetVal() {
+        document.getElementById('coefftissue').value = document.getElementById('coefficienttissue').value }
+    </script>
 
     <title>Biodelivery Simulator</title>
 
@@ -33,11 +41,45 @@
     };
     firebase.initializeApp(config);
   </script>
-  
+
 
 
 
     </script>
+
+    <script src="app.js"></script>
+    <script> function showWarning() { 
+        var db = firebase.database()
+        var ref = db.ref('/Defaults/Leaf Properties/')
+        var checkMe1 = document.getElementById('cuticular').value
+        var checkMe2 = document.getElementById('tissue').value
+        var checkMe3 = document.getElementById('coefficientcuticular').value
+        var checkMe4 = document.getElementById('coefficienttissue').value
+        var datum 
+        var modal
+        ref.once('value', function(snapshot){
+            data = snapshot.val()
+        datumThickCL = data.cuticularthickness
+        datumThickLT = data.tissuethickness
+        datumDiffCo = data.diffusionCoefficientCL
+        datumMeta = data.metabolicRate
+        if (checkMe1 == datumThickCL || checkMe2 == datumThickLT || checkMe3 == datumDiffCo || checkMe4 == datumMeta) { 
+            console.log('line 238')
+            modal = window.confirm('You are being defaulted to a Naked AI')
+            if (modal == true) { 
+            sessionStorage.setItem('pagetitle', 'Leaf Properties')
+            updateProfileSim()
+            } else {  } 
+         } else {
+                sessionStorage.setItem('pagetitle', 'Leaf Properties') 
+                updateProfileSim()}
+       
+         
+        })
+    }
+    </script>
+
+
     <title>Bio Delivery Simulator</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -58,13 +100,13 @@
       <!-- Progress bar -->
       <div class="row bs-wizard" style="border-bottom:0;">
           <div class="col-sm bs-wizard-step complete">
-              <div class="text-center bs-wizard-stepnum">Spray</div>
+              <div class="text-center bs-wizard-stepnum"><strong>Spray</strong></div>
               <div class="progress"><div class="progress-bar"></div></div>
               <a href="Spray.html" class="bs-wizard-dot"></a>
           </div>
 
           <div class="col-sm bs-wizard-step active"><!-- complete -->
-              <div class="text-center bs-wizard-stepnum">Leaf Properties</div>
+              <div class="text-center bs-wizard-stepnum"><strong>Leaf Properties</strong></div>
               <div class="progress"><div class="progress-bar"></div></div>
               <a href="Leaf Properties.html" class="bs-wizard-dot"></a>
           </div>
@@ -90,119 +132,91 @@
 
       <hr/>
 
-      <!-- Form -->
+        <!-- Form -->
       <div class="row justify-content-center">
       <div class="col-sm-10 align-self-center">
               <form>
 
  <div class="form-group row">
-     <label class="col-sm-5" for="exampleInputEmail1">Surface Morphology/Contact Angle</label>
+     <label class="col-sm-5" >Surface Morphology/Contact Angle</label>
      <div class="col-sm-2">
-         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="number" id="angle" maxlength="10" name="value"  value=""/>
      </div>
-     <label class="col-sm-2" for="exampleInputEmail1">degrees</label>
+     <label class="col-sm-1" ></label>degrees</label>
+
  </div>
 
  <div class="form-group row">
-     <label class="col-sm-5" for="exampleInputEmail1">Thickeness of Cuticular Layer</label>
+     <label class="col-sm-5" >Thickness of Cuticular Layer</label>
      <div class="col-sm-2">
-         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="number" id="cuticular" maxlength="10" name="value"  value="" placeholder='4'/>
      </div>
-     <label class="col-sm-2" for="exampleInputEmail1">microns</label>
+     <label class="col-sm-1" ></label>microns</label>
+
  </div>
 
  <div class="form-group row">
-     <label class="col-sm-5" for="exampleInputEmail1">Thickness of leaf tissue</label>
+     <label class="col-sm-5" >Thickness of Leaf Tissue</label>
      <div class="col-sm-2">
-         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="number" id="tissue" maxlength="10" name="value"  value="" placeholder ='1'/>
      </div>
-     <label class="col-sm-2" for="exampleInputEmail1">mm</label>
+     <label class="col-sm-1" ></label>mm</label>
+
  </div>
 
  <div class="form-group row">
-     <label class="col-sm-5" for="exampleInputEmail1">Diffusion Coefficent in Cuticular Layer</label>
+     <label class="col-sm-5" >Diffusion Coefficent in Cuticular Layer</label>
      <div class="col-sm-2">
-         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="number" id="coefficientcuticular" maxlength="10" name="value"  value="" placeholder='10^-16' />
      </div>
-     <label class="col-sm-2" for="exampleInputEmail1">m^2/s</label>
+     <label class="col-sm-1" ></label>m^2/s</label>
+
  </div>
 
  <div class="form-group row">
-     <label class="col-sm-5" for="exampleInputEmail1">Diffusion Coefficent in Leaf Tissue</label>
-     <div class="col-sm-2">
-         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-     </div>
-      <label class="col-sm-2" for="exampleInputEmail1">m^2/s</label>
- </div>
+    <label class="col-sm-5" >Diffusions Coefficient in tissue</label>
+
+        <div class="form-check form-check-inline" oninput='getVal()' onclick='resetVal()'>
+            <select id="coefficienttissue" class="form-control">
+                    <option>Other</option>
+                   <option value="1e-16">Low</option>
+                   <option value="1e-14">Med</option>
+                   <option value="1e-12">High</option>
+            </select>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="number" id="coefftissue" maxlength="10" name="value"  value="10^-16" />
+          </div>
+
+      </div>
 
      <div class="form-group row">
-         <label class="col-sm-2" for="exampleInputEmail1">Metabolic Rate*</label>
-         <div class="col-sm-10">
-             <div class="form-check form-check-inline">
-                 <select id="inputState" class="form-control">
-                     <option selected>Zero Order</option>
-                     <option>First Order</option>
-                      <option>Second Order</option>
+         <label class="col-sm-5" >Metabolic Rate*</label>
+         <!-- <div class="col-sm-2"> -->
+             <div class="form-check form-check-inline" oninput='getVal()' onclick='resetVal()'>
+                 <select id="metabolicrate" class="form-control">
+                        <option>Select Order</option>
+                        <option value="1">Zero Order</option>
+                        <option value="2">First Order</option>
+                        <option value="3">Second Order</option>
                  </select>
              </div>
              <div class="form-check form-check-inline">
-                 <input type="text" class="form-control" id="inputCity">
-             </div>
+                    <input type="number" id="metabolism" maxlength="10" name="value"  value=""/>
+          </div>
+      </div>
 
-         </div>
-     </div>
-
- <div class="form-group row">
-     <label class="col-sm-5" for="exampleInputEmail1">Ester 2 acids </label>
-     <div class="col-sm-2">
-       <div class="form-check form-check-inline">
-           <label class="form-check-label">
-               <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Yes
-           </label>
-       </div>
-       <div class="form-check form-check-inline">
-           <label class="form-check-label">
-               <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> No
-           </label>
-       </div>
-   </div>
+  </form>
+</div>
 </div>
 
-        </form>
-        </div>
-    </div>
-    <!-- Button trigger modal -->
-    <div class="form-group row">
-       <div class="col-sm-2 offset-sm-5">
-         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-         Next
-         </button>
-       </div>
-
-     </form>
-     </div>
-  </div>
+<!-- Button trigger modal -->
+<div class="col-sm-2 offset-sm-5">
+      <button type="button" id="loadDroplet" onClick="showWarning()" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      Next
+      </button>
 
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h4 class="modal-title" id="myModalLabel">Note</h4>
-</div>
-<div class="modal-body">
-You are defaulted to naked AI
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-<a href="Droplet Properties.html" class="btn btn-warning" role="button" aria-pressed="true">OK</a>
-
-</div>
-</div>
-</div>
-</div>
-</div>
 
 </div>
 
@@ -213,5 +227,28 @@ You are defaulted to naked AI
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 <script var database ="firebase.database.bio-sim.firebaseapp.com" (); > </script>
 
+        <script>
+        var db = firebase.database();
+        var ref = db.ref('/Current Simulation/Load_Custom_Entry');
+        ref.once('value', function(snapshot) {
+        var checkIfUserVals = snapshot.val().User_Leaf;
+
+        if (checkIfUserVals == 0) {
+            loadLeafPropDefaults()
+        } else if (checkIfUserVals == 1) {
+            var db = firebase.database();
+            var ref = db.ref('/Current Simulation/Current Sim/Leaf_Properties');
+            ref.once('value', function(snapshot) {
+                document.getElementById("angle").value = snapshot.val().surfaceMorphology;
+                document.getElementById("cuticular").value = snapshot.val().cuticularThickness;
+                document.getElementById("tissue").value = snapshot.val().tissueThickness;
+                document.getElementById("coefficientcuticular").value = snapshot.val().coefficientCuticular;
+                document.getElementById("coefficienttissue").value = snapshot.val().coefficientTissue;
+            })
+
+        }
+
+        })
+        </script>
 </body>
 </html>

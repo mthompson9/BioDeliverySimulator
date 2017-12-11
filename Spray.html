@@ -32,8 +32,14 @@
   </script>
 
  <script src="app.js"></script>
+ <script> function getVal() { 
+     return document.getElementById('size').value = document.getElementById('nozzles').value }
+</script>
+<script> function resetVal() { 
+    document.getElementById('size').value = document.getElementById('nozzles').value }
+</script>
         <title>Bio Delivery Simulator</title>
-        
+
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,14 +53,14 @@
             <div class="container bg-light" style="padding: 40px 0">
 
                 <h1 class="text-center">Bio Delivery Simulator</h1>
-                
 
                 <hr/>
+
 
                 <!-- Progress bar -->
                 <div class="row bs-wizard" style="border-bottom:0;">
                     <div class="col-sm bs-wizard-step complete">
-                        <div class="text-center bs-wizard-stepnum">Spray</div>
+                        <div class="text-center bs-wizard-stepnum"><strong>Spray</strong></div>
                         <div class="progress"><div class="progress-bar"></div></div>
                         <a href="Spray.html" class="bs-wizard-dot"></a>
                     </div>
@@ -86,169 +92,166 @@
 
                 <hr/>
 
-                <!-- Form -->
-                <div class="row justify-content-center">
-                <div class="col-sm-10 align-self-center">
-                        <form>
-                                <div class="form-group row">
-                                    <label class="col-sm-2" for="exampleInputEmail1">Wind speed</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="low" type="radio" name="inlineRadioOptions"  value="option1"> Low
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="medium" type="radio" name="inlineRadioOptions"  value="option2"> Medium
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="high" type="radio" name="inlineRadioOptions"  value="option3"> High
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+                 <!-- Form -->
+                 <div class="row justify-content-center">
+                  <div class="col-sm-10 align-self-center">
 
-                                <div class="form-group row">
-                                    <label class="col-sm-2" for="exampleInputEmail1">Rain</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="none" type="radio" name="inlineRadioOptions2"  value="option1"> None
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="weak" type="radio" name="inlineRadioOptions2"  value="option2"> Weak
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="heavy" type="radio" name="inlineRadioOptions2"  value="option3"> Heavy
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+                         <form>
+                                 <div class="form-group row">
+                                     <label class="col-sm-5"for="exampleInputEmail1" >Wind speed</label>
+                                     <div class="col-sm-2">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="low" type="radio" name="inlineRadioOptions"  value="1"> Low
+                                             </label>
+                                         </div>
+                                         <div class="form-check form-check-inline">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="medium" type="radio" name="inlineRadioOptions"  value="2"> Medium
+                                             </label>
+                                         </div>
+                                         <div class="form-check form-check-inline">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="high" type="radio" name="inlineRadioOptions"  value="3"> High
+                                             </label>
+                                         </div>
+                                           </div>
 
-                                <div class="form-group row">
-                                    <label class="col-sm-2" for="exampleInputEmail1">Droplet diameter</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check form-check-inline">
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Nozzle model</option>
-                                                <option>...</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input type="text" class="form-control" id="inputCity">
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input type="text" class="form-control" id="inputCity">
-                                        </div>
-                                    </div>
-                                </div>
 
-                            <p><div class="form-group row">
-                                    <label class="col-sm-2" for="exampleInputEmail1">Application height</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="aerial" type="radio" name="inlineRadioOptions3"  value="option1"> Aerial
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="boonSpray" type="radio" name="inlineRadioOptions3"  value="option2"> Boon spray
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="knapsack" type="radio" name="inlineRadioOptions3"  value="option3"> Knapsack
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </p>
+                                 <div class="form-group row">
+                                     <label class="col-sm-5" for="exampleInputEmail1">Rain</label>
+                                     <div class="col-sm-2">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="none" type="radio" name="inlineRadioOptions2"  value="option1"> None
+                                             </label>
+                                         </div>
+                                         <div class="form-check form-check-inline">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="weak" type="radio" name="inlineRadioOptions2"  value="option2"> Weak
+                                             </label>
+                                         </div>
+                                         <div class="form-check form-check-inline">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="heavy" type="radio" name="inlineRadioOptions2"  value="option3"> Heavy
+                                             </label>
+                                         </div>
+                                       </div>
 
-                                <div class="form-group row">
-                                    <label class="col-sm-2" for="exampleInputEmail1">Application rate (g/hectare</label>
-                                    <div class="col-sm-10">
-                                            <p><input type="textbox" id="rate" maxlength="10" name="value"  value="I"/></p>
-                                           
-                                    </div>
-                                </div>
+                                 <div class="form-group row">
+                                     <label class="col-sm-5">Droplet diameter</label>
 
-                                <div class="form-group row">
-                                    <label class="col-sm-2" for="exampleInputEmail1">Dilution rate (L)</label>
-                                    <div class="col-sm-10">
-                                            <p><input type="textbox" id="dilutionrate" maxlength="10" name="value"  value="I"/></p>
-                                    </div>
-                                </div>
+                                     <div class="form-check form-check-inline" oninput='getVal()' onclick='resetVal()'>
+                                             <select id="nozzles" class="form-control">
+                                                 <option value=0>Nozzle model</option>
+                                                 <option value=1>Small</option>
+                                                 <option value=2>Medium</option>
+                                                 <option value=3>Large</option>
+                                             </select>
+                                         </div>
+                                          <div class="form-check form-check-inline">
+                                                 <input type="number" id="size" maxlength="10" name="value"  value="" required />
+                                         </div>
+                                         </div>
 
-                                <div class="form-group row">
-                                    <label class="col-sm-2" for="exampleInputEmail1">RH</label>
-                                    <div class="col-sm-10">
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="dry" type="radio" name="inlineRadioOptions4"  value="option1"> Dry
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="medium" type="radio" name="inlineRadioOptions4"  value="option2"> Medium
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="humid" type="radio" name="inlineRadioOptions4"  value="option3"> Humid
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" id="veryhumid" type="radio" name="inlineRadioOptions4"  value="option3"> Very humid
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
 
+                             <div class="form-group row">
+                                     <label class="col-sm-5" for="exampleInputEmail1">Application height</label>
+                                     <div class="col-sm-2">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="aerial" type="radio" name="inlineRadioOptions3"  value="1"> Aerial
+                                             </label>
+                                         </div>
+                                         <div class="form-check form-check-inline">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="boonSpray" type="radio" name="inlineRadioOptions3"  value="2"> Boon spray
+                                             </label>
+                                         </div>
+                                         <div class="form-check form-check-inline">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="knapsack" type="radio" name="inlineRadioOptions3"  value="3"> Knapsack
+                                             </label>
+                                         </div>
+                                       </div>
+
+                                 <div class="form-group row">
+                                     <label class="col-sm-5" >Application rate</label>
+                                     <div class="col-sm-2">
+                                             <input type="number" id="rate" maxlength="10" name="value"  value="I"/>
+
+                                     </div>
+                                     <label class="col-sm-2" for="exampleInputEmail1"></label></label>
+
+                                 </div>
+
+
+
+                                 <div class="form-group row">
+                                     <label class="col-sm-5">Spray Volume</label>
+                                     <div class="col-sm-2">
+                                           <input type="number" id="sprayVolume" maxlength="10" name="value"  value="I" placeholder='200'/>
+                                     </div>
+
+                                     <label class="col-sm-1" ></label>L/ha</label>
+                            </div>
+
+                                 <div class="form-group row">
+                                     <label class="col-sm-5" for="exampleInputEmail1">RH</label>
+                                     <div class="col-sm-2">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="dry" type="radio" name="inlineRadioOptions4"  value="1"> Dry
+                                             </label>
+                                         </div>
+                                         <div class="form-check form-check-inline">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="medium" type="radio" name="inlineRadioOptions4"  value="2"> Medium
+                                             </label>
+                                         </div>
+                                         <div class="form-check form-check-inline">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="humid" type="radio" name="inlineRadioOptions4"  value="3"> Humid
+                                             </label>
+                                         </div>
+                                         <div class="form-check form-check-inline">
+                                             <label class="form-check-label">
+                                                 <input class="form-check-input" id="veryhumid" type="radio" name="inlineRadioOptions4"  value="4"> Very humid
+                                             </label>
+                                           </div>
+                                           </div>
                             </form>
                             </div>
-                        </div>
-                        <!-- Button trigger modal -->
-                        <div class="form-group row">
-                           <div class="col-sm-2 offset-sm-5">
-                             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                             Next
-                             </button>
-                           </div>
+                          </div>
 
-                         </form>
-                         </div>
-                      </div>
+                    
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Note</h4>
-          </div>
-          <div class="modal-body">
-            You are defaulted to naked AI
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <a href="Leaf Properties.html" class="btn btn-warning" role="button" aria-pressed="true">OK</a>
+            <script> function showWarning() { 
+                var db = firebase.database()
+                var ref = db.ref('/Defaults/Spray/')
+                var checkMe = document.getElementById('sprayVolume').value
+                var datum 
+                var modal
+                ref.once('value', function(snapshot){
+                    data = snapshot.val().dilutionRate
+                datum = data
+                if (checkMe == datum) { 
+                    console.log('line 238')
+                    modal = window.confirm('You are being defaulted to a Naked AI')
+                    if (modal == true) { 
+                    sessionStorage.setItem('pagetitle', 'Spray')
+                    updateProfileSim()
+                    } else { 
+                        updateProfileSim() } 
+                } else {
+                sessionStorage.setItem('pagetitle', 'Spray')
+                updateProfileSim() }
+                  })
+            }
+            </script>
+    <div class="col-sm-2 offset-sm-5">
+                                <button type="button" id="loadDroplet" onClick='showWarning()' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                Next
+                                </button>
 
-          </div>
-        </div>
-      </div>
-    </div>
             </div>
-
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -256,7 +259,30 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
         <script var database ="firebase.database.bio-sim.firebaseapp.com" (); > </script>
 
-        <script>loadSprayDefaults()</script>
+        <script>
+        var db = firebase.database();
+        var ref = db.ref('/Current Simulation/Load_Custom_Entry');
+        ref.once('value', function(snapshot) {
+        var checkIfUserVals = snapshot.val().User_Spray;
+
+        if (checkIfUserVals == 0) {
+            loadSprayDefaults()
+        } else if (checkIfUserVals == 1) {
+            var db = firebase.database();
+            var ref = db.ref('/Current Simulation/Current Sim/Spray');
+            ref.once('value', function(snapshot) {
+                document.getElementById("sprayVolume").value = snapshot.val().Dilution_Rate;
+                document.getElementById("size").value = snapshot.val().Nozzle_Size;
+                document.getElementById("length").value = snapshot.val().Nozzle_Length;
+                document.getElementById("rate").value = snapshot.val().Nozzle_Length;
+            })
+
+        }
+
+        })
+        </script>
+
+
 
       </body>
     </html>

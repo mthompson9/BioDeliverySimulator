@@ -33,6 +33,11 @@
       </script>
 
     </script>
+
+      <!-- Connect to app.js -->
+      <script src="app.js"></script>
+      <script src="Sim Name Storage.js"></script>
+
         <title>Bio Delivery Simulator</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -56,16 +61,18 @@
                 <form>
                     <div class="form-group">
                       <label for="exampleInputFilePath">New Simulation</label>
-                      <input type="text" class="form-control" id="exampleInputFilePath" aria-describedby="Help" placeholder="Choose your path for file download">
+                      <input type="text" class="form-control" id="currentSimName" aria-describedby="Help" center-align placeholder="Choose a name for this Simulation profile"></center-align>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputNewFile">Open Existing profiles</label>
-                      <input type="file" class="form-control" id="exampleInputNewFile" placeholder="Existing file path">
+                      <input type="file" class="form-control" id="currentSimName" placeholder="Existing file path">
                     </div>
 
                     <div align="center">
-                      <a href="Spray.html" class="btn btn-primary">Start
-                      </a>
+                        <form>
+                          <input type="button" value="Start" class="btn btn-primary" onclick="newSimulation(document.getElementById('currentSimName').value)" />
+                            
+                            </form>
                   </div>
                   </form>
             </div>
@@ -77,6 +84,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <script>    
+    var db = firebase.database();
+    var ref = db.ref('/Current Simulation/');
+     ref.once('value', function(snapshot) {
+      ref.child('Load_Custom_Entry').update ({
+                User_Spray : ("0"),
+                User_Leaf : ("0"),
+                User_Droplet : ("0"),
+                User_AI : ("0"),
+                User_TP : ("0")
+            })  
+    
+       })  </script>
+
+
   </body>
 </html>
 
@@ -92,7 +115,6 @@
         // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
         //
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
         try {
           let app = firebase.app();
           let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');

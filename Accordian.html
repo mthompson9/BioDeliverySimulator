@@ -1,56 +1,41 @@
+
 <!DOCTYPE html>
+
 <html>
   <head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 
     <title>Biodelivery Simulator</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/4.6.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/4.6.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/4.6.1/firebase-database.js"></script>
-    <script defer src="/__/firebase/4.6.1/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/4.6.1/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
-
-    <!doctype html>
-    <html lang="en">
-      <head>
-
-        <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyAY0ANXjGBme9GMjKfAU6lYCwjLbi7VZDU",
-        authDomain: "fedobot.firebaseapp.com",
-        databaseURL: "https://fedobot.firebaseio.com",
-        projectId: "fedobot",
-        storageBucket: "fedobot.appspot.com",
-        messagingSenderId: "747606478765"
-      };
-      firebase.initializeApp(config);
-
-
-    </script>
-  <title>Bio Delivery Simulator</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <!-- update the version number as needed -->
+     <script defer src="/__/firebase/4.6.1/firebase-app.js"></script>
+     <!-- include only the Firebase features as you need -->
+     <script defer src="/__/firebase/4.6.1/firebase-auth.js"></script>
+     <script defer src="/__/firebase/4.6.1/firebase-database.js"></script>
+     <script defer src="/__/firebase/4.6.1/firebase-messaging.js"></script>
+     <script defer src="/__/firebase/4.6.1/firebase-storage.js"></script>
+     <!-- initialize the SDK after all desired features are loaded -->
+     <script defer src="/__/firebase/init.js"></script>
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="app.css">
-</head>
-<body>
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
   <div class="container bg-light" style="padding: 40px 0">
 
     <h1 class="text-center">Bio Delivery Simulator</h1>
 
     <hr/>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+
+  </script>
+
+  <script src="app.js"></script>
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="app.css">
@@ -68,7 +53,6 @@
     }
     .header-accordion{
         position:relative;
-
     }
     .profile-tabs{
         position:relative;
@@ -83,11 +67,9 @@
     .panel-title .glyphicon{
         font-size: 14px;
     }
-
     .prop-list {
       border-left: #666 2px solid;
     }
-
     .center {
       text-align: center;
     }
@@ -106,48 +88,232 @@
         });
     });
 </script>
-<script>
-    $(function() {
-  var current_progress = 0;
-  var interval = setInterval(function() {
-      current_progress += 5;
-      $("#dynamic")
-      .css("width", current_progress + "%")
-      .attr("aria-valuenow", current_progress)
-      .text(current_progress + "% Complete");
-      if (current_progress >= 100)
-      {
-        clearInterval(interval);
-        window.location.href="heatmap.html"
-      }
 
-  }, 1000);
-});
-</script>
+        <div class="row justify-content-center">
 
-<body>
+                      <div class="col-sm-8 justify-content-center" style="padding: 0 10rem;">
+                        <h3 class="center">Simulation</h3></br>
+                        <h4 class="center">Time Points</h3></br>
+                        <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                <span id="current-progress"></span>
+                              </div>
+                            <!-- Key  -->
 
-  <div class="row justify-content-center">
+                                                       <table align="left" border="1">
+                                                         <tr>
+                                                           <th>Percentage</th>
+                                                           <th>Colour</th>
+                                                         </tr>
+                                                         <tr>
+                                                           <td>0%-20%</td>
+                                                           <td bgcolor="#60CF33"></td>
+                                                         </tr>
+                                                         <tr>
+                                                           <td>21%-40%</td>
+                                                           <td bgcolor="#F7E34E"></td>
+                                                         </tr>
+                                                         <tr>
+                                                           <td>41%-60%</td>
+                                                          <td bgcolor="#F2AE4C"></td>
+                                                         </tr>
+                                                         <tr>
+                                                           <td>61%-80%</td>
+                                                          <td bgcolor="#F90000"></td>
+                                                         </tr>
+                                                         <tr>
+                                                           <td>81%-100%</td>
+                                                           <td bgcolor="#7B0D0D"></td>
+                                                         </tr>
+                                                       </table>
 
-      <div class="col-sm-8 justify-content-center" style="padding: 0 10rem;">
-        <h3 class="center">Simulation</h3>
-        <div class="progress">
-          <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-            <span id="current-progress"></span>
-          </div>
-          <div class="calculation">
+                                                       <!-- <p>UPLT</p>
+                                                       <p>UPLW</p>
+                                                       <p>UPCUT</p>
+                                                       <p>UPLT,UPLW</p>
+                                                       <p>UPLT,UPLW,UPCUT</p> -->
 
-          </div>
-        </div>
-        <div>
 
-        <p>Calculating...</p>
-      </div>
-      </div>
+
+                              <!-- Table 2 -->
+
+                              <div class="row justify-content-center">
+                                <div class="col-sm-10 align-self-center">
+
+                                  <table id="heatMapTable" class="table table-bordered heatmap-table">
+                                    <tbody data-bind="foreach: rows">
+                                      <tr>
+
+                                        <td data-bind="css: $parent.getClass($data[0])"><a data-bind="text: $data[0] + '%', attr: { href: $parent.getGraph($index()) }"></a></td>
+                                        <td data-bind="css: $parent.getClass($data[1])"><a data-bind="text: $data[1] + '%', attr: { href:  $parent.getGraph($index() +7) }"></a></td>
+                                        <td data-bind="css: $parent.getClass($data[2])"><a data-bind="text: $data[2] + '%', attr: { href:  $parent.getGraph($index() +12)}"></a></td>
+                                        <!-- <td data-bind="css: $parent.getClass($data[3])"><a data-bind="text: $data[3] + '%', attr: { href:  $parent.getGraph($index()) }"></a></td> -->
+                                        
+                                        
+
+                                      </tr>
+                                    </tbody>
+                                  </table>
+
+                                    <p id="count"></p>
+                                    <button onclick="countTable()">Try it</button>
+
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+
+                            <script>
+
+
+
+
+                              // Grab our element
+                              var table = document.getElementById("heatMapTable");
+
+
+                          function ViewModel() {
+
+                            var self = this;
+
+                              self.rows = ko.observable();
+
+                              self.getClass = function(num) {
+                                if (num <= 20) {
+                                  return  "group1";
+
+                                } else if (num <= 40) {
+                                    return  "group2";
+
+                                } else if (num <= 60) {
+                                    return  "group3";
+
+                                } else if (num <= 80) {
+                                    return "group4"
+
+                                } else if (num <= 100)  {
+                                  return "group5"
+                                }
+                              }
+
+                              self.getGraph = function(num) {
+                                console.log(num)
+                                if (num == 0) {
+                                  return  "graphs.html";
+
+                                } else if (num == 1) {
+                                  num++;
+                                    return  "graphs2.html";
+
+                                } else if (num == 2) {
+                                  num++;
+                                    return  "graphs3.html";
+
+                                } else if (num == 3) {
+                                  num++;
+                                    return "graphs4.html"
+
+                                } else if (num == 4)  {
+                                  num++;
+                                  return "graphs5.html"
+
+                                } else if (num == 7)  {
+                                  num++;
+                                  return "graphs6.html"
+
+                                } else if (num == 8)  {
+                                  num++;
+                                  return "graphs7.html"
+
+                                } else if (num == 9)  {
+                                  num++;
+                                  return "graphs8.html"
+
+                                } else if (num == 10)  {
+                                  num++;
+                                  return "graphs9.html"
+
+                                } else if (num == 11)  {
+                                  num++;
+                                  return "graphs10.html"
+
+                                } else if (num == 12)  {
+                                  num++;
+                                  return "graphs11.html"
+
+                                } else if (num == 13)  {
+                                  num++;
+                                  return "graphs12.html"
+
+                                } else if (num == 14)  {
+                                  num++;
+                                  return "graphs13.html"
+
+                                } else if (num == 15)  {
+                                  num++;
+                                  return "graphs14.html"
+
+                                } else if (num == 16)  {
+                                  num++;
+                                  return "graphs15.html"
+
+                                }  else {
+                                  return "graphs.html";
+                                }
+                              }
+                            }
+
+                            var viewModel = new ViewModel();
+                            ko.applyBindings(viewModel, table);
+
+                            const config2 = {
+                              apiKey: "AIzaSyCHBinUqUn2Xnt4FQZHeivt_6UXX-5SX1M",
+                              authDomain: "bio-sim.firebaseapp.com",
+                              databaseURL: "https://bio-sim.firebaseio.com",
+                              projectId: "bio-sim",
+                              storageBucket: "bio-sim.appspot.com",
+                              messagingSenderId: "1069672537767"
+                            };
+
+                            firebase.initializeApp(config2);
+
+                            const dbRefObject = firebase.database().ref().child('Current Simulation');
+                            const dbRefList = dbRefObject.child('currentSim/output')
+
+                              //sync object changes
+                              dbRefList.on('value', snap => {
+                                var ourDbObject = snap.val();
+                                var outputArray = [];
+                                Object.keys(ourDbObject).forEach(function(key){
+                                  if (key.startsWith("col")) {
+                                    outputArray.push(ourDbObject[key]);
+                                  }
+                                });
+                                viewModel.rows(outputArray);
+                              });
+
+                              var toPythonSimTitle = sessionStorage.getItem('Simulation Name')
+                              callPython(toPythonSimTitle)
+
+                           </script>
+
+                             <script>
+                            function countTable() {
+
+                              var table = document.getElementById("heatMapTable").rows[0].cells.length;
+                              document.getElementById("count").innerHTML = " Found " + table  + " cells in table";
+                            }
+
+
+                              // connect logic with markup
+
+                            </script>
+
       <div class="col-sm-4 prop-list">
 
           <div>
-            <div class="header-accordion" id="accordion"</div>
+            <div class="header-accordion" id="accordion"></div>
 
             <h2>Properties</h2>
 
@@ -180,9 +346,9 @@
                         <div id="collapseOne" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <p>
-                                Wind Speed: <br> Rain: <br>
-                                Droplet Diameter: <br> Droplet Speed: <br>
-                                Application Height: <br> Application Rate: <br> Dilution Rate:
+                                <strong>Wind Speed: </strong><p id="as-speed"></p> <br> <strong>Rain: </strong><p id="as-rain"></p><br><strong>Relative Humidity:</strong><p id='as-rh'></p><br>
+                                <strong>Droplet Diameter: </strong><p id="as-drop"></p><br> <strong>Nozzle Size: </strong><p id="as-nozsize"></p><br>
+                                <strong>Application Height: </strong><p id="as-height">0</p><br> <strong>Application Rate: </strong><p id="as-rate"></p><br> <strong>Dilution Rate: </strong><p id="adrate"></p>
                                 </p>
                             </div>
                         </div>
@@ -196,10 +362,9 @@
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <p>
-                                Surface Angle: <br> Cuticle Thickness: <br>
-                                Tissue Thickness: <br> Metabolic Rate: <br>
-                                Diffusion Coefficient(Cuticular Layer): <br> Diffusion Coefficient(Leaf Tissue): <br> Ester to acid:
-                                </p>
+                                    <strong>Surface Angle: </strong><p id="al-morph"></p><br> <strong>Cuticle Thickness: </strong><p id="al-cut"></p><br>
+                                    <strong>Tissue Thickness: </strong><p id="al-tissue"></p><br> <strong>Metabolic Rate: </strong><p id="al-metab"></p><br>
+                                    <strong>Diffusion Coefficient(Cuticular Layer): </strong><p id="al-diffco"></p><br> <strong>Diffusion Coefficient(Leaf Tissue): </strong><p id="al-diffleaf"></p><br>
                             </div>
                         </div>
                     </div>
@@ -212,8 +377,8 @@
                         <div id="collapseThree" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <p>
-                                Diffusion Coefficient: <br> Surface Tension(Liquid Vapour): <br>
-                                Droplet Dynamic Viscosity: <br> Droplet Density: <br> Log P:
+                                <strong>Diffusion Coefficient: </strong><p id="ad-diffco"></p><br> <strong>Surface Tension(Liquid Vapour): </strong><p id="ad-surften"></p><br>
+                                <strong>Droplet Dynamic Viscosity: </strong><p id="ad-ddvisc"></p><br> <strong>Droplet Density: </strong><p id="ad-density"></p><br> <strong>Log P: </strong><p id="ad-logp"></p>
                                 </p>
                             </div>
                         </div>
@@ -227,9 +392,9 @@
                         <div id="collapseFour" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <p>
-                                Molar Mass: <br> Partial Pressure: <br>
-                                Solubility in Water: <br> Volatility Rate*: <br>
-                                Photostability Rate*: <br> Crystallisation Rate*: <br> Dissolution Rate:
+                                <strong>Molar Mass: </strong><p id="ai-molar"></p><br> <strong>Partial Pressure: </strong><p id="ai-partial"></p><br><strong>Procide: </strong><p id='procide'></p>
+                                <strong>Solubility in Water: </strong><p id="ai-solub"></p><br> <strong>Volatility Rate*: </strong><p id="ai-volat"></p><br><strong>Chemical Stability: </strong><p id='ai-chem'></p><br>
+                                <strong>Photostability Rate*: </strong><p id="ai-photo"></p><br> <strong>Crystallisation Rate*: </strong><p id="ai-cryst"></p><br> <strong>Dissolution Rate: </strong><p id="ai-diss"></p>
                                 </p>
                             </div>
                         </div>
@@ -241,9 +406,52 @@
       </div>
 
   </div>
+  <script>
+        window.onload = function test() {
+         var testString;
+
+         var db = firebase.database();
 
 
-
+         var customSimTitle = sessionStorage.getItem('Simulation Name')
+           var refPath = ('/Current Simulation/' + customSimTitle + '/')
+           var ref = db.ref(refPath);
+           ref.once('value', function(snapshot) {
+             var here = snapshot.val()
+             //Spray
+             document.getElementById('as-height').innerHTML = here.Spray.ApplicationHeight
+             document.getElementById('as-rate').innerHTML = here.Spray.ApplicationRate
+             document.getElementById('adrate').innerHTML = here.Spray.DilutionRate
+             document.getElementById('as-drop').innerHTML = here.Spray.DropletDiameter
+             //document.getElementById('as-nozlen').innerHTML = here.Spray.Nozzle_Length
+             document.getElementById('as-nozsize').innerHTML = here.Spray.NozzleSize
+             document.getElementById('as-rain').innerHTML = here.Spray.Rain
+             document.getElementById('as-rh').innerHTML = here.Spray.RelativeHumidity
+             document.getElementById('as-speed').innerHTML = here.Spray.Wind_Speed
+             // Leaf Properties
+             document.getElementById('al-morph').innerHTML = here.Leaf_Properties.surfaceMorphology
+             document.getElementById('al-diffleaf').innerHTML = here.Leaf_Properties.coefficientCuticular
+             document.getElementById('al-diffco').innerHTML = here.Leaf_Properties.coefficientTissue
+             document.getElementById('al-tissue').innerHTML = here.Leaf_Properties.tissueThickness
+             document.getElementById('al-cut').innerHTML = here.Leaf_Properties.cuticularThickness
+             // Droplet Properties
+             document.getElementById('ad-density').innerHTML = here.Droplet_Properties.Density
+             document.getElementById('ad-diffco').innerHTML = here.Droplet_Properties.DiffusionCoefficient
+             document.getElementById('ad-ddvisc').innerHTML = here.Droplet_Properties.DropletDynamic_Viscocity
+             document.getElementById('ad-logp').innerHTML = here.Droplet_Properties.Log_P
+             document.getElementById('ad-surften').innerHTML = here.Droplet_Properties.SurfaceTension
+             // AI
+             document.getElementById('ai-chem').innerHTML = here.AI.Chemicalstability
+             document.getElementById('ai-cryst').innerHTML = here.AI.CrystalisationRate
+             document.getElementById('ai-diss').innerHTML = here.AI.DissolutionRate
+             document.getElementById('ai-molar').innerHTML = here.AI.MolarMass
+             document.getElementById('ai-partial').innerHTML = here.AI.PartialPressure
+             document.getElementById('ai-photo').innerHTML = here.AI.Photostability
+             document.getElementById('ai-solub').innerHTML = here.AI.SolubilityInWater
+             document.getElementById('ai-volat').innerHTML = here.AI.VolatilityRate
+     });
+    }
+    </script>
 
 
 </body>
