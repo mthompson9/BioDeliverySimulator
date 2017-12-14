@@ -6,11 +6,19 @@
     
     <script> function getVal() {
 
-         return document.getElementById('coefftissue').value = document.getElementById('coefficienttissue').value }
+        return document.getElementById('coefftissue').value = document.getElementById('coefficienttissue').value }
     </script>
-    <script> function resetVal() {
-        document.getElementById('coefftissue').value = document.getElementById('coefficienttissue').value }
-    </script>
+          <script> function resetVal() {
+              document.getElementById('coefftissue').value = document.getElementById('coefficienttissue').value }
+          </script>
+
+
+          <script> function getVal2() {
+              return document.getElementById('metabolism').value = document.getElementById('metabolicrate').value }
+          </script>
+          <script> function resetVal2() {
+              document.getElementById('metabolism').value = document.getElementById('metabolicrate').value }
+          </script>
 
     <title>Biodelivery Simulator</title>
 
@@ -193,7 +201,7 @@
      <div class="form-group row">
          <label class="col-sm-5" >Metabolic Rate*</label>
          <!-- <div class="col-sm-2"> -->
-             <div class="form-check form-check-inline" oninput='getVal()' onclick='resetVal()'>
+             <div class="form-check form-check-inline" oninput='getVal2()' onclick='resetVal2()'>
                  <select id="metabolicrate" class="form-control">
                         <option>Select Order</option>
                         <option value="1">Zero Order</option>
