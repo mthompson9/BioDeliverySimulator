@@ -3,14 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <script> function getVal() {
-
-         return document.getElementById('coefftissue').value = document.getElementById('coefficienttissue').value }
-    </script>
-    <script> function resetVal() {
-        document.getElementById('coefftissue').value = document.getElementById('coefficienttissue').value }
-    </script>
 
     <title>Biodelivery Simulator</title>
 
@@ -45,16 +37,15 @@
 
 
 
-    </script>
 
     <script src="app.js"></script>
     <script> function showWarning() { 
         var db = firebase.database()
         var ref = db.ref('/Defaults/Leaf Properties/')
-        var checkMe1 = document.getElementById('cuticular').value
-        var checkMe2 = document.getElementById('tissue').value
-        var checkMe3 = document.getElementById('coefficientcuticular').value
-        var checkMe4 = document.getElementById('coefficienttissue').value
+        var checkMe1 = document.getElementById('cuticularThickness').value
+        var checkMe2 = document.getElementById('tissueThickness').value
+        var checkMe3 = document.getElementById('diffusionCoefficientCL').value
+        var checkMe4 = document.getElementById('metabolicRate').value
         var datum 
         var modal
         ref.once('value', function(snapshot){
@@ -70,14 +61,22 @@
             sessionStorage.setItem('pagetitle', 'Leaf Properties')
             updateProfileSim()
             } else {  } 
-         } else {
-                sessionStorage.setItem('pagetitle', 'Leaf Properties') 
+         } else { 
                 updateProfileSim()}
        
          
         })
     }
     </script>
+
+          <script> function getVal() {
+              return document.getElementById('metabolism').value = document.getElementById('metabolicrate').value }
+          </script>
+          <script> function resetVal() {
+              document.getElementById('metabolism').value = document.getElementById('metabolicrate').value }
+          </script>
+
+
 
 
     <title>Bio Delivery Simulator</title>
@@ -142,8 +141,7 @@
      <div class="col-sm-2">
             <input type="number" id="angle" maxlength="10" name="value"  value=""/>
      </div>
-     <label class="col-sm-1" ></label>degrees</label>
-
+     <label class="col-sm-2" for="exampleInputEmail1"></label>degrees</label>
  </div>
 
  <div class="form-group row">
@@ -151,8 +149,7 @@
      <div class="col-sm-2">
             <input type="number" id="cuticular" maxlength="10" name="value"  value="" placeholder='4'/>
      </div>
-     <label class="col-sm-1" ></label>microns</label>
-
+     <label class="col-sm-2" for="exampleInputEmail1"></label>microns</label>
  </div>
 
  <div class="form-group row">
@@ -160,8 +157,7 @@
      <div class="col-sm-2">
             <input type="number" id="tissue" maxlength="10" name="value"  value="" placeholder ='1'/>
      </div>
-     <label class="col-sm-1" ></label>mm</label>
-
+     <label class="col-sm-2" ></label>mm</label>
  </div>
 
  <div class="form-group row">
@@ -169,14 +165,13 @@
      <div class="col-sm-2">
             <input type="number" id="coefficientcuticular" maxlength="10" name="value"  value="" placeholder='10^-16' />
      </div>
-     <label class="col-sm-1" ></label>m^2/s</label>
-
+     <label class="col-sm-2" ></label>m^2/s</label>
  </div>
 
  <div class="form-group row">
     <label class="col-sm-5" >Diffusions Coefficient in tissue</label>
-
-        <div class="form-check form-check-inline" oninput='getVal()' onclick='resetVal()'>
+    <div class="col-sm-2">
+        <div class="form-check form-check-inline">
             <select id="coefficienttissue" class="form-control">
                     <option>Other</option>
                    <option value="1e-16">Low</option>
@@ -184,15 +179,19 @@
                    <option value="1e-12">High</option>
             </select>
         </div>
+        <divclass="form-check form-check-inline">
+            <input type="number" id="coefficienttissue" maxlength="10" name="value"  value="" placeholder='10^-16' />
+        </div>
         <div class="form-check form-check-inline">
-            <input type="number" id="coefftissue" maxlength="10" name="value"  value="10^-16" />
-          </div>
 
-      </div>
+        </div>
+
+
+</div>
 
      <div class="form-group row">
-         <label class="col-sm-5" >Metabolic Rate*</label>
-         <!-- <div class="col-sm-2"> -->
+         <label class="col-sm-5" >Metabolic Rate</label>
+         <div class="col-sm-2">
              <div class="form-check form-check-inline" oninput='getVal()' onclick='resetVal()'>
                  <select id="metabolicrate" class="form-control">
                         <option>Select Order</option>
@@ -203,13 +202,14 @@
              </div>
              <div class="form-check form-check-inline">
                     <input type="number" id="metabolism" maxlength="10" name="value"  value=""/>
+                  </label>
+              </div>
           </div>
       </div>
 
   </form>
+  </div>
 </div>
-</div>
-
 <!-- Button trigger modal -->
 <div class="col-sm-2 offset-sm-5">
       <button type="button" id="loadDroplet" onClick="showWarning()" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
@@ -217,6 +217,25 @@
       </button>
 
 
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="myModalLabel">Note</h4>
+</div>
+<div class="modal-body">
+You are defaulted to naked AI
+</div>
+<div class="modal-footer">
+<button type="button" id="pagetitle" value="Leaf Properties" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+<a href="Droplet Properties.html" class="btn btn-warning" role="button" aria-pressed="true">OK</a>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 </div>
 
@@ -252,3 +271,4 @@
         </script>
 </body>
 </html>
+
